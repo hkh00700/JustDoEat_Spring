@@ -1,2 +1,10 @@
 target/
+
+.settings/
+src/test/
+.classpath
+.project
+.springBeans
+
+/Servers/
 /.metadata/
