@@ -1,8 +1,5 @@
 target/
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 .settings/
 src/test/
 .classpath
