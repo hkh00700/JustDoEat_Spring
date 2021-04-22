@@ -1,5 +1,7 @@
 package com.hanul.justdoeat.command;
 
-public class EatCommand {
+import org.springframework.ui.Model;
 
+public interface EatCommand {
+	public void execute(Model model);
 }
