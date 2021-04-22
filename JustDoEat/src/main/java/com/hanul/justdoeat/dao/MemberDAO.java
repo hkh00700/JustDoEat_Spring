@@ -2,11 +2,14 @@ package com.hanul.justdoeat.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+
+import com.hanul.justdoeat.dto.MemberDTO;
 
 public class MemberDAO {
 
@@ -21,6 +24,58 @@ public class MemberDAO {
 		}
 		
 	}//practiceDAO()
+	
+public MemberDTO Login(String id, String pw) {
+		
+		
+	
+		MemberDTO dto = null;
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select * from member where m_id = '" + id + "'and m_pw = '" + pw + "' ";
+			prepareStatement = connection.prepareStatement(query);
+			resultSet = prepareStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				String m_id = resultSet.getString("m_id");
+				String m_name = resultSet.getString("m_name");
+				String m_phone = resultSet.getString("m_phone");
+				String m_gender = resultSet.getString("m_gender"); 
+				String m_email = resultSet.getString("m_email"); 
+				String m_nikname = resultSet.getString("m_nikname"); 
+
+				dto = new MemberDTO(m_id, m_name, m_phone, m_gender, m_email, m_nikname);							
+			}	
+			System.out.println("MemberDTO id : " + dto.getM_id());
+		} catch (Exception e) {
+			
+		}finally {
+			try {
+				if(resultSet != null) {
+					resultSet.close();
+				}
+				if(prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if(connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				
+			}
+		}
+		
+		return dto;
+		
+	}
+	
+	
 	
 	//회원가입하기
 	public int memberJoin(String m_id, String m_pw, String m_name, String m_phone, String m_gender, String m_email, String m_nikname) {

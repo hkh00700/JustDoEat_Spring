@@ -1,6 +1,7 @@
 package com.hanul.justdoeat.dto;
 
 public class MemberDTO {
+	
 String m_id, m_pw, m_name, m_phone, m_gender, m_email, m_nikname;
 	
 	// 데이터베이스에 멤버변수 추가할 때

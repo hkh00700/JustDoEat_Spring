@@ -1,5 +1,7 @@
 package com.hanul.justdoeat.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -9,11 +11,38 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hanul.justdoeat.command.EatCommand;
 import com.hanul.justdoeat.command.JoinCommand;
+import com.hanul.justdoeat.command.LoginCommand;
 
 @Controller
 public class MemberController {
 	
 	EatCommand command;
+	
+	@RequestMapping(value="/memberLogin", method = {RequestMethod.GET, RequestMethod.POST})	
+	public String anLogin(HttpServletRequest req, Model model) {
+
+		try {
+			req.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		String u_id = (String)req.getParameter("id");
+		String u_pw = (String)req.getParameter("pw");
+		
+		System.out.println(u_id);
+		System.out.println(u_pw);
+		
+		model.addAttribute("u_id", u_id);
+		model.addAttribute("u_pw", u_pw);
+		
+		command = new LoginCommand();
+		command.execute(model);
+		
+		return "memberLogin";
+	}
+	
+	
 	
 	@RequestMapping(value="/memberJoin", method = {RequestMethod.GET, RequestMethod.POST} ) 
 	public String memberJoin(HttpServletRequest req, Model model){
