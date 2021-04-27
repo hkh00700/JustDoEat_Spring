@@ -34,7 +34,7 @@ public MemberDTO Login(String id, String pw) {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select * from member where m_id = '" + id + "'and m_pw = '" + pw + "' ";
+			String query = "select * from member where m_id = '" + id + "' and m_pw = '" + pw + "' ";
 			prepareStatement = connection.prepareStatement(query);
 			resultSet = prepareStatement.executeQuery();
 			
@@ -74,7 +74,52 @@ public MemberDTO Login(String id, String pw) {
 	}
 
 
+	// 카카오 로그인
+	public MemberDTO kakaoLogin(String m_emailin) {
+		
+		MemberDTO dto = null;
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select * from member where m_email = '" + m_emailin + "'" ;
+			prepareStatement = connection.prepareStatement(query);
+			resultSet = prepareStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				
+				String m_gender = resultSet.getString("m_gender"); 
+				String m_email = resultSet.getString("m_email"); 
+				String m_nikname = resultSet.getString("m_nikname"); 
 	
+				dto = new MemberDTO(m_gender, m_email, m_nikname);							
+			}	
+			System.out.println("MemberDTO kakao email : " + dto.getM_email());
+		} catch (Exception e) {
+			
+		}finally {
+			try {
+				if(resultSet != null) {
+					resultSet.close();
+				}
+				if(prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if(connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				
+			}
+		}
+		
+		return dto;
+		
+	}
 	
 	//회원가입하기
 	public int memberJoin(String m_id, String m_pw, String m_name, String m_phone, String m_gender, String m_email, String m_nikname) {

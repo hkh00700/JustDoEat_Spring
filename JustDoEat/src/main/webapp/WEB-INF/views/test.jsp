@@ -9,4 +9,3 @@
 	out.println(json);
 
 %>
-

@@ -27,6 +27,14 @@ String m_id, m_pw, m_name, m_phone, m_gender, m_email, m_nikname;
 		this.m_email = m_email;
 		this.m_nikname = m_nikname;
 	}
+	
+	// 카카오 로그인할 때 
+		public MemberDTO(String m_gender, String m_email, String m_nikname) {
+			super();
+			this.m_gender = m_gender;
+			this.m_email = m_email;
+			this.m_nikname = m_nikname;
+		}
 
 	public String getM_id() {
 		return m_id;

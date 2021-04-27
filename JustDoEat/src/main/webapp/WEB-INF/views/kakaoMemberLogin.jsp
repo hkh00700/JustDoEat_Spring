@@ -4,7 +4,7 @@
 
 <%
 	 Gson gson = new Gson();
-	String json = gson.toJson((MemberDTO)request.getAttribute("memberLogin"));
+	String json = gson.toJson((MemberDTO)request.getAttribute("kakaoMemberLogin"));
 	
 	out.println(json);
 

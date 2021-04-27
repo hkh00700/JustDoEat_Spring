@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hanul.justdoeat.command.JoinCommand;
+import com.hanul.justdoeat.command.KakaoLoginCommand;
 import com.hanul.justdoeat.command.LoginCommand;
 import com.hanul.justdoeat.command.MemberCommand;
 
@@ -41,6 +42,28 @@ public class MemberController {
 		command.execute(model);
 		
 		return "memberLogin";
+	}
+	
+	@RequestMapping(value="/kakaoMemberLogin", method = {RequestMethod.GET, RequestMethod.POST})	
+	public String kakaoLogin(HttpServletRequest req, Model model) {
+		System.out.println("kakaoMemberLogin들어왔다");
+ 
+		try {
+			req.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		String m_email = (String)req.getParameter("m_email");
+		
+		System.out.println(m_email);
+		
+		model.addAttribute("m_email", m_email);
+		
+		command = new KakaoLoginCommand();
+		command.execute(model);
+		
+		return "kakaoMemberLogin";
 	}
 	
 	
