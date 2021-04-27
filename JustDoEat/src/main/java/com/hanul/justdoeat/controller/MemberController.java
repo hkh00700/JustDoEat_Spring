@@ -9,18 +9,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.hanul.justdoeat.command.EatCommand;
 import com.hanul.justdoeat.command.JoinCommand;
 import com.hanul.justdoeat.command.LoginCommand;
+import com.hanul.justdoeat.command.MemberCommand;
 
 @Controller
 public class MemberController {
 	
-	EatCommand command;
+	MemberCommand command;
 	
 	@RequestMapping(value="/memberLogin", method = {RequestMethod.GET, RequestMethod.POST})	
 	public String anLogin(HttpServletRequest req, Model model) {
-
+		System.out.println("memberLogin들어왔다");
+ 
 		try {
 			req.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {

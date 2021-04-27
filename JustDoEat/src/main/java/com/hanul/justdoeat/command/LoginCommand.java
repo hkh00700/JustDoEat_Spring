@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import com.hanul.justdoeat.dao.MemberDAO;
 import com.hanul.justdoeat.dto.MemberDTO;
 
-public class LoginCommand implements EatCommand {
+public class LoginCommand implements MemberCommand {
 
 	@Override
 	public void execute(Model model) {

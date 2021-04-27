@@ -26,8 +26,6 @@ public class MemberDAO {
 	}//practiceDAO()
 	
 public MemberDTO Login(String id, String pw) {
-		
-		
 	
 		MemberDTO dto = null;
 		Connection connection = null;
@@ -74,7 +72,8 @@ public MemberDTO Login(String id, String pw) {
 		return dto;
 		
 	}
-	
+
+
 	
 	
 	//회원가입하기

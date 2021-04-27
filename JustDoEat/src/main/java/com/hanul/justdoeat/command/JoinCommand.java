@@ -4,7 +4,7 @@ import org.springframework.ui.Model;
 
 import com.hanul.justdoeat.dao.MemberDAO;
 
-public class JoinCommand implements EatCommand {
+public class JoinCommand implements MemberCommand {
 
 	@Override
 	public void execute(Model model) {
