@@ -14,6 +14,8 @@ import com.hanul.justdoeat.command.eatSelectRandomCommand;
 import com.hanul.justdoeat.dao.GameDAO;
 import com.hanul.justdoeat.dto.GameDTO;
 
+
+
 @Controller
 public class GameController {
 
