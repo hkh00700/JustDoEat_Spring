@@ -26,7 +26,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.hanul.justdoeat" />
-	
+	<context:component-scan base-package="com.hanul.justdoeat.controller" />
 	
 	
 </beans:beans>
