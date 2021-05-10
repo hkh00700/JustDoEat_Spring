@@ -25,7 +25,55 @@ public class MemberDAO {
 		
 	}//practiceDAO()
 	
-public MemberDTO Login(String id, String pw) {
+	
+	public int memberModify(String m_pw, String m_name, String m_phone, String m_gender, String m_nikname, String m_address1, String m_address2, String m_email) {
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		int state = -100;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "update member set m_pw = ?, m_name = ?, m_phone = ?, m_gender = ?, m_nikname = ?, m_addr1 = ?, m_addr2 = ? where m_email = ?";
+			prepareStatement = connection.prepareStatement(query);
+			prepareStatement.setString(1, m_pw);
+			prepareStatement.setString(2, m_name);
+			prepareStatement.setString(3, m_phone);
+			prepareStatement.setString(4, m_gender);
+			prepareStatement.setString(5, m_nikname);
+			prepareStatement.setString(6, m_address1);
+			prepareStatement.setString(7, m_address2);
+			prepareStatement.setString(8, m_email);
+			state = prepareStatement.executeUpdate();
+			
+			if (state > 0) {
+				System.out.println(state + "수정성공");				
+			} else {
+				System.out.println(state + "수정실패");
+			}
+			
+		} catch (Exception e) {			
+			System.out.println(e.getMessage());
+		} finally {
+			try {				
+				if (prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}	
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+
+			}
+		}
+		
+		
+		return state;
+	}
+		
+	public MemberDTO Login(String id, String pw) {
 	
 		MemberDTO dto = null;
 		Connection connection = null;
@@ -162,6 +210,5 @@ public MemberDTO Login(String id, String pw) {
 		
 		return state;
 	}
-	
 	
 }

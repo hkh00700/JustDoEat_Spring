@@ -34,7 +34,7 @@ public class GameDAO {
 		PreparedStatement prepareStatement = null;
 		ResultSet resultSet = null;		
 		
-		String sql = "SELECT * FROM (SELECT food FROM FOOD_14  ORDER BY DBMS_RANDOM.RANDOM()) WHERE ROWNUM <= 5";
+		String sql = "SELECT * FROM (SELECT food FROM FOOD_05  ORDER BY DBMS_RANDOM.RANDOM()) WHERE ROWNUM <= 32";
 		
 		try {
 			connection = dataSource.getConnection();
