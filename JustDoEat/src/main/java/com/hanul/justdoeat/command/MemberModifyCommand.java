@@ -25,5 +25,7 @@ public class MemberModifyCommand implements MemberCommand {
 		
 	}
 	
+	
+	
 
 }
