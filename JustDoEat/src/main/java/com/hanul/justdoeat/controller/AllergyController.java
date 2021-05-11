@@ -14,7 +14,7 @@ import com.hanul.justdoeat.command.AllergyCommand;
 @Controller
 public class AllergyController {
 	
-	//음식 알레르기 리스트 가져오기
+	//음식 알레르기 리스트 가져오기 - 소분류
 	@RequestMapping(value="/allergySearchlist", method = {RequestMethod.GET, RequestMethod.POST})
 	public String allergylist(HttpServletRequest req, Model model) {
 		AllergyCommand allergyCommand = new AllergyCommand();

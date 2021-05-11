@@ -2,5 +2,5 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <c:forEach var="i" items="${list }">
-${i} <br/>
+${i},
 </c:forEach>
