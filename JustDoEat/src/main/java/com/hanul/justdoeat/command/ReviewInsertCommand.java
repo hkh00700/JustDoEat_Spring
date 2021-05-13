@@ -4,7 +4,7 @@ import org.springframework.ui.Model;
 
 import com.hanul.justdoeat.dao.ReviewDAO;
 
-public class ReviewInsert implements ReviewCommand {
+public class ReviewInsertCommand implements ReviewCommand {
 	@Override
 	public void execute(Model model) {
 		
@@ -14,7 +14,7 @@ public class ReviewInsert implements ReviewCommand {
 		String s_photo_path = (String)model.asMap().get("s_photo_path");
 		
 		ReviewDAO dao = new ReviewDAO();
-		dao.reviewInsert(s_title, s_content, s_photo_path );
+		dao.reviewInsert(s_title, s_content, s_photo_path, (String)model.asMap().get("s_id") );
 			
 	}	 
 }
