@@ -42,8 +42,6 @@ public class AllergyListDAO {
 			while(rs.next()) {
 				String a_material = rs.getString("a_material");
 				list.add(a_material);
-				System.out.println(a_material);
-				System.out.println("지금부터");
 			}
 		} catch (Exception e) {
 			System.out.println("AllergyListDAO" + e.getMessage());
