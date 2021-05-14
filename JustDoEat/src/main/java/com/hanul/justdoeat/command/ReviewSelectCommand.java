@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import com.hanul.justdoeat.dao.ReviewDAO;
 import com.hanul.justdoeat.dto.MemberReviewDTO;
 
-public class ReviewSelect implements ReviewCommand {
+public class ReviewSelectCommand implements ReviewCommand {
 	@Override
 	public void execute(Model model) {			
 		ReviewDAO adao = new ReviewDAO();

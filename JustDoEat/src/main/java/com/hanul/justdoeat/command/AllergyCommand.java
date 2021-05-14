@@ -17,8 +17,9 @@ public class AllergyCommand implements AllergyLIstService {
 
 	@Override
 	public int m_allergylist_insert(String m_id, String m_allergy) {
-		AllergyInsertDAO allergyinsertdao = new AllergyInsertDAO();
-		return allergyinsertdao.memberModify(m_id, m_allergy);
+		//AllergyInsertDAO allergyinsertdao = new AllergyInsertDAO();
+		//return allergyinsertdao.memberModify(m_id, m_allergy);
+		return 0;
 	}
 
 }

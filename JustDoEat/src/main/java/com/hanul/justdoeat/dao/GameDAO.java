@@ -34,7 +34,29 @@ public class GameDAO {
 		PreparedStatement prepareStatement = null;
 		ResultSet resultSet = null;		
 		
-		String sql = "SELECT * FROM (SELECT food FROM FOOD_05  ORDER BY DBMS_RANDOM.RANDOM()) WHERE ROWNUM <= 32";
+		
+		 String sql =
+		 "SELECT * FROM (SELECT food FROM FOODAll ORDER BY DBMS_RANDOM.RANDOM()) WHERE ROWNUM <= 32"
+		 ;
+		
+		
+		
+		
+		/*
+		 * int ran = (int)(Math.random()*16);
+		 * 
+		 * String sql = ""; if(ran < 10) { sql =
+		 * "select * from (select food from food_0" +ran +
+		 * " order by dbms_random.random()) where rownum <= 1 "; }else { sql =
+		 * "select * from (select food from food_" +ran +
+		 * " order by dbms_random.random()) where rownum <= 1 ";
+		 * 
+		 * }
+		 */
+		
+		
+		
+		
 		
 		try {
 			connection = dataSource.getConnection();
@@ -47,7 +69,7 @@ public class GameDAO {
 				//data = data + resultSet.getString("food") + ",";
 				
 				 GameDTO dto = new GameDTO(); dto.setFood(resultSet.getString("food"));
-				  edtos.add(dto);				 
+				 edtos.add(dto);				 
 					
 			}
 		}catch (Exception e) {

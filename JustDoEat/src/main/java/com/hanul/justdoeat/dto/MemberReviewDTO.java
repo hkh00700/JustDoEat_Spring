@@ -6,15 +6,15 @@ public class MemberReviewDTO {
 	    private String s_title;
 	    private String s_content;
 	    private String s_photo_path;
-	    private String s_nikname;
+	    private String s_id;
 		
-	    public MemberReviewDTO(int no, String s_title, String s_content, String s_photo_path, String s_nikname) {
+	    public MemberReviewDTO(int no, String s_title, String s_content, String s_photo_path, String s_id) {
 			super();
 			this.no = no;
 			this.s_title = s_title;
 			this.s_content = s_content;
 			this.s_photo_path = s_photo_path;
-			this.s_nikname = s_nikname;
+			this.s_id = s_id;
 		}
 	    
 	    
@@ -60,12 +60,12 @@ public class MemberReviewDTO {
 			this.s_photo_path = s_photo_path;
 		}
 
-		public String getS_nikname() {
-			return s_nikname;
+		public String getS_id() {
+			return s_id;
 		}
 
-		public void setS_nikname(String s_nikname) {
-			this.s_nikname = s_nikname;
+		public void setS_id(String s_id) {
+			this.s_id = s_id;
 		}
 	
 	    
