@@ -1,15 +1,15 @@
 package com.hanul.justdoeat.dto;
 
-public class RestrantDTO {
-	public String restrant;
+public class RestaurantDTO {
+	public String restaurant;
 	public float r_latitude;
 	public float r_hardness;
 	
-	public String getRestrant() {
-		return restrant;
+	public String getRestaurant() {
+		return restaurant;
 	}
-	public void setRestrant(String restrant) {
-		this.restrant = restrant;
+	public void setRestaurant(String restaurant) {
+		this.restaurant = restaurant;
 	}
 	public float getR_latitude() {
 		return r_latitude;
@@ -23,7 +23,5 @@ public class RestrantDTO {
 	public void setR_hardness(float r_hardness) {
 		this.r_hardness = r_hardness;
 	}
-	
-	
 
 }

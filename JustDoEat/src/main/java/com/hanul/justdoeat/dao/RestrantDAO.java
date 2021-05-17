@@ -11,7 +11,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.hanul.justdoeat.dto.RestrantDTO;
+import com.hanul.justdoeat.dto.RestaurantDTO;
+
 
 public class RestrantDAO {
 	
@@ -27,26 +28,25 @@ public class RestrantDAO {
 		
 	}//DAO()
 	
-	public ArrayList<RestrantDTO> restrant() {
+	public ArrayList<RestaurantDTO> restrant() {
 		
-		ArrayList<RestrantDTO> list = new ArrayList<RestrantDTO>();
+		ArrayList<RestaurantDTO> list = new ArrayList<RestaurantDTO>();
 		
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		RestrantDTO dto = new RestrantDTO();
-		
-		
+			
 		try {
 			conn = dataSource.getConnection();
-			String sql = "select * from restrantadd";
+			String sql = "select * from restaurantaddr";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				dto.setRestrant(rs.getString("restrant"));
+				RestaurantDTO dto = new RestaurantDTO();
+				dto.setRestaurant(rs.getString("restaurant"));
 				dto.setR_latitude(rs.getFloat("r_latitude"));
-				dto.setR_hardness(rs.getFloat("R_hardness"));
+				dto.setR_hardness(rs.getFloat("r_hardness"));
 				list.add(dto);
 			}
 		} catch (Exception e) {
