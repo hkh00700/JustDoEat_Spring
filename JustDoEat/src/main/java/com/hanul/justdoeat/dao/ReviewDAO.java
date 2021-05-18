@@ -37,7 +37,8 @@ public class ReviewDAO {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select * from s_board"; 
+			String query = "select * from s_board order by updatetime desc"; 
+			
 			prepareStatement = connection.prepareStatement(query);
 			resultSet = prepareStatement.executeQuery();
 			
@@ -93,10 +94,19 @@ public class ReviewDAO {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "insert into s_board(s_title, s_content, s_photo_path, s_id) " + 
-			               "values('" + s_title + "', '" + s_content + "', '" + s_photo_path + "', '" +s_id+ "')";
-			prepareStatement = connection.prepareStatement(query);
+
+			String sql = "insert into s_board (s_title, s_content, s_photo_path, s_id, updatetime) values "
+					+ "(?, ?, ?, ?, sysdate)";
+			
+			prepareStatement = connection.prepareStatement(sql);
+			prepareStatement.setString(1, s_title);
+			prepareStatement.setString(2, s_content);
+			prepareStatement.setString(3, s_photo_path);
+			prepareStatement.setString(4, s_id);
+
+			
 			state = prepareStatement.executeUpdate();
+			
 			
 			if (state > 0) {
 				System.out.println(state + "»ğÀÔ¼º°ø");				
