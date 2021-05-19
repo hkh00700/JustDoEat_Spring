@@ -14,8 +14,8 @@ import java.util.Map;
 
 public class Foodimg {
 
-	 String clientId = "0aK5eyZdZ_F_RnzpFpKn"; //�븷�뵆由ъ��씠�뀡 �겢�씪�씠�뼵�듃 �븘�씠�뵒媛�"
-     String clientSecret = "APQtJbbpUG"; //�븷�뵆由ъ��씠�뀡 �겢�씪�씠�뼵�듃 �떆�겕由욧컪"
+	 String clientId = "0aK5eyZdZ_F_RnzpFpKn"; //占쎈막占쎈탣�뵳�딉옙占쎌뵠占쎈�� 占쎄깻占쎌뵬占쎌뵠占쎈섧占쎈뱜 占쎈툡占쎌뵠占쎈탵揶쏉옙"
+     String clientSecret = "3zSA1Wbj9j"; //占쎈막占쎈탣�뵳�딉옙占쎌뵠占쎈�� 占쎄깻占쎌뵬占쎌뵠占쎈섧占쎈뱜 占쎈뻻占쎄쾿�뵳�슙而�"
      
      String text;
 
@@ -24,19 +24,19 @@ public class Foodimg {
     	 try {
 	            text = URLEncoder.encode(food, "UTF-8");
 	        } catch (UnsupportedEncodingException e) {
-	            throw new RuntimeException("寃��깋�뼱 �씤肄붾뵫 �떎�뙣",e);
+	            throw new RuntimeException("野껓옙占쎄퉳占쎈선 占쎌뵥�굜遺얜뎃 占쎈뼄占쎈솭",e);
 	        }
 	        String apiURL = "https://openapi.naver.com/v1/search/image?query=" + text
-	        		+ "&display=" + 1;// json 寃곌낵
+	        		+ "&display=" + 1;// json 野껉퀗�궢
 	        
-	        //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 寃곌낵
+	        //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 野껉퀗�궢
 	        
 	        Map<String, String> requestHeaders = new HashMap<String, String>();
 	        requestHeaders.put("X-Naver-Client-Id", clientId);
 	        requestHeaders.put("X-Naver-Client-Secret", clientSecret);
 	        String responseBody = get(apiURL,requestHeaders);
 	        
-	        System.out.println("�쓳�떟 : " + responseBody);
+	        System.out.println("占쎌벓占쎈뼗 : " + responseBody);
 
 	       return responseBody;
     	 
@@ -52,13 +52,13 @@ public class Foodimg {
 	            }
 
 	            int responseCode = con.getResponseCode();
-	            if (responseCode == HttpURLConnection.HTTP_OK) { // �젙�긽 �샇異�
+	            if (responseCode == HttpURLConnection.HTTP_OK) { // 占쎌젟占쎄맒 占쎌깈�빊占�
 	                return readBody(con.getInputStream());
-	            } else { // �뿉�윭 諛쒖깮
+	            } else { // 占쎈퓠占쎌쑎 獄쏆뮇源�
 	                return readBody(con.getErrorStream());
 	            }
 	        } catch (IOException e) {
-	            throw new RuntimeException("API �슂泥�怨� �쓳�떟 �떎�뙣", e);
+	            throw new RuntimeException("API 占쎌뒄筌ｏ옙�⑨옙 占쎌벓占쎈뼗 占쎈뼄占쎈솭", e);
 	        } finally {
 	            con.disconnect();
 	        }
@@ -69,9 +69,9 @@ public class Foodimg {
 	            URL url = new URL(apiUrl);
 	            return (HttpURLConnection)url.openConnection();
 	        } catch (MalformedURLException e) {
-	            throw new RuntimeException("API URL�씠 �옒紐삳릺�뿀�뒿�땲�떎. : " + apiUrl, e);
+	            throw new RuntimeException("API URL占쎌뵠 占쎌삋筌륁궠由븝옙肉�占쎈뮸占쎈빍占쎈뼄. : " + apiUrl, e);
 	        } catch (IOException e) {
-	            throw new RuntimeException("�뿰寃곗씠 �떎�뙣�뻽�뒿�땲�떎. : " + apiUrl, e);
+	            throw new RuntimeException("占쎈염野껉퀣�뵠 占쎈뼄占쎈솭占쎈뻥占쎈뮸占쎈빍占쎈뼄. : " + apiUrl, e);
 	        }
 	    }
      
@@ -88,7 +88,7 @@ public class Foodimg {
 
 	            return responseBody.toString();
 	        } catch (IOException e) {
-	            throw new RuntimeException("API �쓳�떟�쓣 �씫�뒗�뜲 �떎�뙣�뻽�뒿�땲�떎.", e);
+	            throw new RuntimeException("API 占쎌벓占쎈뼗占쎌뱽 占쎌뵭占쎈뮉占쎈쑓 占쎈뼄占쎈솭占쎈뻥占쎈뮸占쎈빍占쎈뼄.", e);
 	        }
 	    }
 
