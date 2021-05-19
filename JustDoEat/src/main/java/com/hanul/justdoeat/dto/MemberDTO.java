@@ -3,7 +3,10 @@ package com.hanul.justdoeat.dto;
 public class MemberDTO {
 	
 String m_id, m_pw, m_name, m_phone, m_gender, m_email, m_nikname;
+
+
 	
+
 	// 데이터베이스에 멤버변수 추가할 때
 	public MemberDTO(String m_id, String m_pw, String m_name, String m_phone, String m_gender, String m_email,
 			String m_nikname) {
@@ -15,6 +18,7 @@ String m_id, m_pw, m_name, m_phone, m_gender, m_email, m_nikname;
 		this.m_gender = m_gender;
 		this.m_email = m_email;
 		this.m_nikname = m_nikname;
+
 	}
 
 	// 로그인할 때 비밀번호 없이 멤버변수 보낼 때
@@ -91,4 +95,8 @@ String m_id, m_pw, m_name, m_phone, m_gender, m_email, m_nikname;
 	public void setM_nikname(String m_nikname) {
 		this.m_nikname = m_nikname;
 	}
+	
+	
+
+
 }

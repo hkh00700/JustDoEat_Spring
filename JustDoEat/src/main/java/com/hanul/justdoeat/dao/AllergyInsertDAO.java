@@ -3,6 +3,7 @@ package com.hanul.justdoeat.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -26,20 +27,62 @@ public class AllergyInsertDAO {
 		
 	}
 
-	 public int memberModify(String m_id, String m_allergy) {
+	 //회원 알러지 정보 가져오기
+	 public String m_allergylist(String m_nikname){
+		 Connection conn = null;
+		 PreparedStatement ps = null;
+		 ResultSet rs = null;
+		 
+		 String allergy = "";
+		 
+		 try {
+			 conn = dataSource.getConnection();
+			 String sql = "select m_allergy from member where m_nikname = ? ";
+			 
+			 ps = conn.prepareStatement(sql);
+			 ps.setString(1, m_nikname);
+			 
+			 rs = ps.executeQuery();
+			 System.out.println(rs);
+			
+			 while(rs.next()) {
+				 allergy = rs.getString("m_allergy");
+			 }
+			 
+			 System.out.println(m_nikname + "의 알러지 : " + allergy );
+			 
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("m_allergylist Exception!!!");
+		} finally {
+				try {
+					if(rs != null)
+					rs.close();
+					if(ps != null) ps.close();
+					if(conn != null) conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		}
+		 
+		 
+		 return allergy;
+	 }
+	 
+	 public int memberModify(String m_nikname, String m_allergy) {
 			Connection connection = null;
 			PreparedStatement prepareStatement = null;
 			int state = -100;
 			
 			try {
 				connection = dataSource.getConnection();
-				String query = "update member set m_allergy = ? where m_id = ?";
+				String query = "update member set m_allergy = ? where m_nikname = ?";
 				
 				prepareStatement = connection.prepareStatement(query);
 				prepareStatement.setString(1, m_allergy);
-				prepareStatement.setString(2, m_id);
+				prepareStatement.setString(2, m_nikname);
 				
-				System.out.println("id: " + m_id);
+				System.out.println("nikname: " + m_nikname);
 				System.out.println("allergy: " + m_allergy);
 				
 				state = prepareStatement.executeUpdate();
