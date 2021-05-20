@@ -93,8 +93,9 @@ public class MemberDAO {
 				String m_gender = resultSet.getString("m_gender"); 
 				String m_email = resultSet.getString("m_email"); 
 				String m_nikname = resultSet.getString("m_nikname"); 
+			
 
-				dto = new MemberDTO(m_id, m_name, m_phone, m_gender, m_email, m_nikname);							
+				dto = new MemberDTO(m_id, m_name, m_phone, m_gender, m_email, m_nikname);			
 			}	
 			System.out.println("MemberDTO id : " + dto.getM_id());
 		} catch (Exception e) {

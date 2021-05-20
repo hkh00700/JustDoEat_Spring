@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.ui.Model;
 
 import com.hanul.jstdoeat.Service.AllergyLIstService;
+import com.hanul.justdoeat.dao.AllergyInsertDAO;
 import com.hanul.justdoeat.dao.AllergyListDAO;
 
 public class AllergyCommand implements AllergyLIstService {
@@ -16,10 +17,16 @@ public class AllergyCommand implements AllergyLIstService {
 	}
 
 	@Override
-	public int m_allergylist_insert(String m_id, String m_allergy) {
-		//AllergyInsertDAO allergyinsertdao = new AllergyInsertDAO();
-		//return allergyinsertdao.memberModify(m_id, m_allergy);
-		return 0;
+	public int m_allergylist_insert(String m_nikname, String m_allergy) {
+		AllergyInsertDAO dao = new AllergyInsertDAO();
+		return dao.memberModify(m_nikname, m_allergy);
+	
+	}
+
+	@Override
+	public String m_allergylist(String m_nikname) {
+		AllergyInsertDAO dao = new AllergyInsertDAO();
+		return dao.m_allergylist(m_nikname);
 	}
 
 }
