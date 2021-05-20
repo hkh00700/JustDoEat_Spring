@@ -35,6 +35,10 @@ public class EatController {
 			System.out.println(r.get(i).getRestaurant());
 			System.out.println(r.get(i).getR_hardness());
 			System.out.println(r.get(i).getR_latitude());
+			System.out.println(r.get(i).getR_address());
+			System.out.println(r.get(i).getR_tel());
+			System.out.println(r.get(i).getR_menu());
+			System.out.println(r.get(i).getR_imgpath());
 
 		}
 
