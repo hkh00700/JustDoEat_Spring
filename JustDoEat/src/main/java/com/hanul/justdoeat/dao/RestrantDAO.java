@@ -47,6 +47,11 @@ public class RestrantDAO {
 				dto.setRestaurant(rs.getString("restaurant"));
 				dto.setR_latitude(rs.getFloat("r_latitude"));
 				dto.setR_hardness(rs.getFloat("r_hardness"));
+				dto.setR_address(rs.getString("r_address"));
+				dto.setR_tel(rs.getString("r_tel"));
+				dto.setR_menu(rs.getString("r_menu"));
+				dto.setR_imgpath(rs.getString("r_imgpath"));
+				
 				list.add(dto);
 			}
 		} catch (Exception e) {
