@@ -4,4 +4,4 @@
 
 ${name }, ${imgurl }
 
-<%-- ${rsponse } --%>
+ ${rsponse }

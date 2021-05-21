@@ -31,7 +31,7 @@ public class FoodController {
 		
 		AllergyCommand command = new AllergyCommand();
 		String allergy = command.m_allergylist(m_nikname);
-		
+//		
 		String[] allergys = allergy.split(",");
 		
 		System.out.println("recommand()");
@@ -45,11 +45,9 @@ public class FoodController {
 		}
 		
 		FoodRandomDTO dto = foodcommand.excute(model);
-		while(dto.getFood() == null) {
+		while(dto.getFood() == null) { 
 			dto = foodcommand.excute(model);
-			
-		} 
-		
+		}
 		for(int i = 0; i < allergys.length; i++) {
 			if(dto.getMaterial() != null) {
 			while(dto.getMaterial().contains(allergys[i].trim())) {
@@ -58,17 +56,18 @@ public class FoodController {
 			System.out.println("foodcontrollggg" + dto.getFood());
 			String food = dto.getFood().toString();
 			
-		//	rsponse = testimg.requstAPI(food);
-		//	imgurl = dao.material(rsponse);
+			rsponse = testimg.requstAPI(food);
+			imgurl = dao.material(rsponse);
 			}else {
 				System.out.println(dto.getFood());
 			}
 			} 
-		
+		rsponse = testimg.requstAPI(dto.getFood());
+		String url = "https://blog.kakaocdn.net/dn/dAEQye/btqDOkONLE0/5TK0HtrButojrSUVadJRP0/img.jpg";
 		System.out.println(dto.getFood() + " : " + imgurl);
 		model.addAttribute("name", dto.getFood());
-		model.addAttribute("imgurl", imgurl);
-		model.addAttribute("rsponse", rsponse);
+		model.addAttribute("imgurl", url);
+	//	model.addAttribute("rsponse", rsponse);
 		
 			
 		

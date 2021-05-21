@@ -23,13 +23,13 @@ public class Foodimg {
 		
     	 try {
 	            text = URLEncoder.encode(food, "UTF-8");
-	            text = food;
+//	            text = food;
 	            System.out.println("음식 : " + text);
 	       } catch (UnsupportedEncodingException e) {
 	           throw new RuntimeException("한글오류",e);
       }
 	      String apiURL = "https://openapi.naver.com/v1/search/image?query=" + text
-	        		+ "&display=" + 1;// json 寃곌낵
+	    		  + "&display=" + 1;// json 寃곌낵`
 	        
 	        //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 
 	        
