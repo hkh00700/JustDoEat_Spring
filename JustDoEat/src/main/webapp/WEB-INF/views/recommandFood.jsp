@@ -2,6 +2,4 @@
     pageEncoding="utf-8"%>
 
 
-${name }, ${imgurl }
-
- ${rsponse }
+${name },

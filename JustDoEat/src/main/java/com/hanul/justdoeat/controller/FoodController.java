@@ -32,7 +32,16 @@ public class FoodController {
 		AllergyCommand command = new AllergyCommand();
 		String allergy = command.m_allergylist(m_nikname);
 //		
-		String[] allergys = allergy.split(",");
+		String food = null;
+		
+		
+		//사용자가 알러지를 가지고 있으면
+						
+			
+		
+				
+		
+		
 		
 		System.out.println("recommand()");
 		
@@ -44,29 +53,39 @@ public class FoodController {
 			System.out.println("FoodCommandR() Exception!!! \n" + e.getMessage());
 		}
 		
+		
+		//음식추천 값이 널이 아닐때까지 돌리기!
 		FoodRandomDTO dto = foodcommand.excute(model);
 		while(dto.getFood() == null) { 
 			dto = foodcommand.excute(model);
 		}
-		for(int i = 0; i < allergys.length; i++) {
-			if(dto.getMaterial() != null) {
-			while(dto.getMaterial().contains(allergys[i].trim())) {
-				dto = foodcommand.excute(model);				
-			}
-			System.out.println("foodcontrollggg" + dto.getFood());
-			String food = dto.getFood().toString();
+		
+		//알러지 있는지 확인하기
+		if(allergy != null) {
+			String[] allergys = allergy.split(",");
 			
-			rsponse = testimg.requstAPI(food);
-			imgurl = dao.material(rsponse);
-			}else {
-				System.out.println(dto.getFood());
-			}
+			for(int i = 0; i < allergys.length; i++) {
+				if(dto.getMaterial() != null) {
+					
+					while(dto.getMaterial().contains(allergys[i].trim())) {
+					dto = foodcommand.excute(model);				
+					}
+						food = dto.getFood().toString();
+				
+				}else {
+					System.out.println(dto.getFood());
+				}
 			} 
-		rsponse = testimg.requstAPI(dto.getFood());
-		String url = "https://blog.kakaocdn.net/dn/dAEQye/btqDOkONLE0/5TK0HtrButojrSUVadJRP0/img.jpg";
-		System.out.println(dto.getFood() + " : " + imgurl);
-		model.addAttribute("name", dto.getFood());
-		model.addAttribute("imgurl", url);
+		} else {
+			
+			food = dto.getFood().toString();
+		}
+	
+	//	rsponse = testimg.requstAPI(dto.getFood());
+	//	String url = "https://blog.kakaocdn.net/dn/dAEQye/btqDOkONLE0/5TK0HtrButojrSUVadJRP0/img.jpg";
+		System.out.println(dto.getFood() + "음식추천");
+		model.addAttribute("name", food);
+	//	model.addAttribute("imgurl", url);
 	//	model.addAttribute("rsponse", rsponse);
 		
 			
