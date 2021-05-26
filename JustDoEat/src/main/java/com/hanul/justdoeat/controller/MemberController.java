@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hanul.justdoeat.command.IdcheckCommand;
 import com.hanul.justdoeat.command.JoinCommand;
 import com.hanul.justdoeat.command.KakaoLoginCommand;
 import com.hanul.justdoeat.command.LoginCommand;
 import com.hanul.justdoeat.command.MemberCommand;
 import com.hanul.justdoeat.command.MemberModifyCommand;
+import com.hanul.justdoeat.dao.MemberDAO;
+import com.hanul.justdoeat.dto.MemberDTO;
 
 @Controller
 public class MemberController {
@@ -86,6 +89,56 @@ public class MemberController {
 		command.execute(model);
 		
 		return "memberLogin";
+	}
+	
+	@RequestMapping(value="/id_check", method = {RequestMethod.GET, RequestMethod.POST})	
+	public String id_check(HttpServletRequest req, Model model) {
+		System.out.println("id_check들어왔다");
+		
+		try {
+			req.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		String u_id = (String)req.getParameter("m_id");
+		  
+			/*
+			 * model.addAttribute("u_id", u_id);
+			 * 
+			 * command = new IdcheckCommand(); command.execute(model);
+			 */
+		  
+		  MemberDAO dao = new MemberDAO();
+		  model.addAttribute("num", dao.id_check(u_id));
+		 
+		
+		return "idcheck";
+	}
+	
+	@RequestMapping(value="/email_check", method = {RequestMethod.GET, RequestMethod.POST})	
+	public String email_check(HttpServletRequest req, Model model) {
+		System.out.println("email_check들어왔다");
+		
+		try {
+			req.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		String u_email = (String)req.getParameter("m_email");
+		
+		/*
+		 * model.addAttribute("u_id", u_id);
+		 * 
+		 * command = new IdcheckCommand(); command.execute(model);
+		 */
+		
+		MemberDAO dao = new MemberDAO();
+		model.addAttribute("num", dao.email_check(u_email));
+		
+		
+		return "emailcheck";
 	}
 	
 	@RequestMapping(value="/kakaoMemberLogin", method = {RequestMethod.GET, RequestMethod.POST})	

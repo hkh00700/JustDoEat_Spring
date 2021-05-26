@@ -72,7 +72,7 @@ public class MemberDAO {
 		
 		return state;
 	}
-		
+	
 	public MemberDTO Login(String id, String pw) {
 	
 		MemberDTO dto = null;
@@ -210,6 +210,104 @@ public class MemberDAO {
 		
 		
 		return state;
+	}
+
+
+	public int id_check(String u_id) {
+		System.out.println("dao들어왔따@");
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		ResultSet resultSet = null;
+		int num = 0;
+		 
+		
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select m_id from member where m_id = ?";
+			prepareStatement = connection.prepareStatement(query);
+			prepareStatement.setString(1, u_id);
+			resultSet = prepareStatement.executeQuery();
+			System.out.println(resultSet);
+			
+			while(resultSet.next()) {
+				String id = resultSet.getString("m_id"); 
+				
+				if(id.equals(u_id)) { num = 1;}
+				
+			}	
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(resultSet != null) {
+					resultSet.close();
+				}
+				if(prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if(connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				
+			}
+		}
+		return num;
+	}
+
+
+	public Object email_check(String u_email) {
+		System.out.println("dao들어왔따@");
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		ResultSet resultSet = null;
+		int num = 0;
+		 
+		
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select m_email from member where m_email = ?";
+			prepareStatement = connection.prepareStatement(query);
+			prepareStatement.setString(1, u_email);
+			resultSet = prepareStatement.executeQuery();
+			System.out.println(resultSet);
+			
+			while(resultSet.next()) {
+				String email = resultSet.getString("m_email"); 
+				
+				if(email.equals(u_email)) { num = 1;}
+				
+			}	
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(resultSet != null) {
+					resultSet.close();
+				}
+				if(prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if(connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				
+			}
+		}
+		return num;
 	}
 	
 }
